@@ -14,17 +14,17 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80))
     password = db.Column(db.String(80))
-    # wims = db.relationship('WIMModel', secondary="tags", back_populates='users')
+    wims = db.relationship('WIMModel', secondary="tags", back_populates='users')
 
     def __init__(self, username, password):
         self.username = username
         self.password = password
 
-    # def add_wim(self, wim_id):
-    #     self.wims.append(wim_id)
+    def add_wim(self, wim_id):
+        self.wims.append(wim_id)
 
-    # def get_wims(self):
-    #     return self.wims
+    def get_wims(self):
+        return self.wims
 
     def save_to_db(self):
         db.session.add(self)
