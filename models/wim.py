@@ -9,7 +9,7 @@ class WIMModel(db.Model):
     name = db.Column(db.String(80))
     uuid = db.Column(UUID(as_uuid=True))
     device_id = db.Column(db.Integer)
-    users = db.relationship('UserModel', secondary="tags", backref='wims')
+    users = db.relationship('UserModel', secondary="tags", back_populates='wims')
 
     def __init__(self, device_id, name, uuid):
         self.name = name
