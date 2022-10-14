@@ -19,7 +19,7 @@ class WIMModel(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "uuid": self.uuid,
+            "uuid": str(self.uuid),
             "device_id": self.device_id,
         }
 

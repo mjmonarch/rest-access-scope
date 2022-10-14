@@ -22,7 +22,7 @@ class WIM(Resource):
     #     required=True,
     #     help="WIM should have a device id!")
 
-    @jwt_required()
+    # @jwt_required()
     def get(self, device_id):
         wim = WIMModel.find_by_device_id(device_id)
         if wim:
