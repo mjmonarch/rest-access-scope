@@ -1,11 +1,11 @@
 from db import db
 
 
-wim_tags = db.Table(
-    "tags",
-    db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
-    db.Column("wim_id", db.Integer, db.ForeignKey("wim.id")),
-)
+# wim_tags = db.Table(
+#     "tags",
+#     db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
+#     db.Column("wim_id", db.Integer, db.ForeignKey("wim.id")),
+# )
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -13,7 +13,7 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80))
     password = db.Column(db.String(80))
-    wims = db.relationship('WIMModel', secondary=wim_tags, backref='users')
+    # wims = db.relationship('WIMModel', secondary=wim_tags, backref='users')
 
     def __init__(self, username, password):
         self.username = username
