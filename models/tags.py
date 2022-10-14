@@ -1,7 +1,8 @@
 from db import db
 
-class Wim_Tags(db.Table):
+class Wim_Tags(db.Model):
     __tablename__ = 'tags'
 
-    db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
-    db.Column("wim_id", db.Integer, db.ForeignKey("wim.id"))
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    wim_id = db.Column(db.Integer, db.ForeignKey("wim.id"))
