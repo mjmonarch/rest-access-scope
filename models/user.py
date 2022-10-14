@@ -1,5 +1,5 @@
 from db import db
-# from tags import Wim_Tags
+from tags import Wim_Tags
 
 # wim_tags = db.Table(
 #     "tags",
