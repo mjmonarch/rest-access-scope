@@ -47,7 +47,7 @@ class WIM(Resource):
 
 
     def delete(self, device_id):
-        wim = WIMModel.find_by_name(device_id)
+        wim = WIMModel.find_by_device_id(device_id)
         if wim:
             wim.delete_from_db()
 
@@ -57,7 +57,7 @@ class WIM(Resource):
     def put(self, device_id):
         request_data = WIM.parser.parse_args()
 
-        wim = WIMModel.find_by_name(device_id)
+        wim = WIMModel.find_by_device_id(device_id)
     
         if not wim:
            wim = WIMModel(device_id, **request_data)
