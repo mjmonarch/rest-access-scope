@@ -1,5 +1,5 @@
 from db import db
-from tags import Wim_Tags
+# from tags import Wim_Tags
 
 # wim_tags = db.Table(
 #     "tags",
@@ -20,11 +20,11 @@ class UserModel(db.Model):
         self.username = username
         self.password = password
 
-    def add_wim(self, wim_id):
-        self.wims.append(wim_id)
+    # def add_wim(self, wim_id):
+    #     self.wims.append(wim_id)
 
-    def get_wims(self):
-        return self.wims
+    # def get_wims(self):
+    #     return self.wims
 
     def save_to_db(self):
         db.session.add(self)
