@@ -1,11 +1,11 @@
 from db import db
 
 
-# wim_tags = db.Table(
-#     "tags",
-#     db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
-#     db.Column("wim_id", db.Integer, db.ForeignKey("wim.id")),
-# )
+wim_tags = db.Table(
+    "tags",
+    db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
+    db.Column("wim_id", db.Integer, db.ForeignKey("wim.id")),
+)
 
 class UserModel(db.Model):
     __tablename__ = 'users'
