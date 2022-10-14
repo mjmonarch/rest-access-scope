@@ -14,7 +14,7 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80))
     password = db.Column(db.String(80))
-    wims = db.relationship('WIMModel', secondary="tags", back_populates='users')
+    # wims = db.relationship('WIMModel', secondary="tags", back_populates='users')
 
     def __init__(self, username, password):
         self.username = username
