@@ -34,3 +34,31 @@ class UserRegister(Resource):
         user.save_to_db()
 
         return {'message': 'User created successfully.'}, 201
+
+
+class User(Resource):
+
+    @jwt_required()
+    def get(self, user_id):
+        username = current_identity.username
+
+        if username != 'admin':
+             return {'message': 'Only admin can get user info.'}, 401
+
+        user = UserModel.find_by_id(user_id)
+        if not user:
+            return {'message': 'User not found'}, 404
+        return user.json()
+
+    @jwt_required()
+    def delete(self, user_id):
+        username = current_identity.username
+
+        if username != 'admin':
+             return {'message': f'Only admin can delete users.'}, 401
+        
+        user = UserModel.find_by_id(user_id)
+        if not user:
+            return {'message': 'User not found'}, 404
+        user.delete_from_db()
+        return {'message': 'User deleted'}, 200

@@ -21,11 +21,10 @@ api = Api(app)
 
 jwt = JWT(app, authentificate, identity) # /auth
 
+routes = ['/user/<int:user_id>', '/user/<int:user_id>/<int:device_id>']
 api.add_resource(WIM, '/wim/<int:device_id>')
 api.add_resource(WIMs, '/wims')
-# api.add_resource(User, '/user/<int:user_id>/<int:device_id>')
-# api.add_resource(Store, '/store/<string:name>')
-# api.add_resource(Stores, '/stores')
+api.add_resource(User, *routes)
 
 api.add_resource(UserRegister, '/register')
 
