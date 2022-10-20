@@ -5,7 +5,7 @@ from flask_restful import Api
 from flask_jwt import JWT
 
 from security import authentificate, identity
-from resources.user import UserRegister, User
+from resources.user import UserRegister, User, Users
 from resources.wim import WIM, WIMs
 
 from models.user import UserModel
@@ -25,6 +25,8 @@ routes = ['/user/<int:user_id>', '/user/<int:user_id>/<int:device_id>']
 api.add_resource(WIM, '/wim/<int:device_id>')
 api.add_resource(WIMs, '/wims')
 api.add_resource(User, *routes)
+api.add_resource(Users,'/users')
+
 
 api.add_resource(UserRegister, '/register')
 

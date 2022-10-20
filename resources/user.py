@@ -57,8 +57,19 @@ class User(Resource):
         if username != 'admin':
              return {'message': f'Only admin can delete users.'}, 401
         
+        # check that it is not trying to delete use with id = 1 (that is admin account)
+        if user_id == 1:
+            return {'message': f"Admin can't be deleted."}, 405
+
         user = UserModel.find_by_id(user_id)
         if not user:
             return {'message': 'User not found'}, 404
         user.delete_from_db()
         return {'message': 'User deleted'}, 200
+
+
+class Users(Resource):
+
+    @jwt_required
+    def get(self):
+        return {'Users': [user.json() for user in UserModel.find_all()]}
