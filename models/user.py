@@ -21,18 +21,27 @@ class UserModel(db.Model):
         self.password = password
 
     def json(self):
+
         return {
             'id': self.id,
             'username': self.username,
-            'password': self.password
+            'password': self.password,
+            'wims': [wim.json() for wim in self.wims]
         }
 
+    def add_wim(self, wim):
+        self.wims.append(wim)
+        db.session.commit()
+        
 
-    def add_wim(self, wim_id):
-        self.wims.append(wim_id)
+    def delete_wim(self, wim):
+        print(self.wims)
+        self.wims.remove(wim)
+        print(self.wims)
+        db.session.commit()
 
-    def get_wims(self):
-        return self.wims
+    def check_wim(self, wim):
+        return wim in self.wims
 
     def save_to_db(self):
         db.session.add(self)
